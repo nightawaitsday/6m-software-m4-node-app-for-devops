@@ -54,7 +54,7 @@ jobs:
           command: |
             echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
             docker tag container-4.5:latest cecilakhiew/container-4.5:latest
-            docker push container-4.5:latest
+            docker push ceciliakhiew/container-4.5:latest
 
 workflows:
   simple_workflow:
