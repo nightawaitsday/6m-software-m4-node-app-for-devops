@@ -45,8 +45,6 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            docker rmi ceciliakhiew/container-4.5:latest
-            docker rmi container-4.5:latest
             docker build -t container-4.5:latest .
       - run:
           name: List Docker images
