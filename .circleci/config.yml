@@ -43,18 +43,12 @@ jobs:
           name: Check Docker version
           command: docker --version
       - run:
-          name: Build Docker image
-          command: |
-            docker build -t container-4.5:latest .
-      - run:
-          name: List Docker images
-          command: docker images
-      - run:
           name: Push Docker image to Docker Hub
           command: |
+            TAG=0.1.$CIRCLE_BUILD_NUM
+            docker build -t $DOCKERHUB_USERNAME/container-4.5:latest .
             echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
-            docker tag container-4.5:latest cecilakhiew/container-4.5:latest
-            docker push ceciliakhiew/container-4.5:latest
+            docker push $DOCKERHUB_USERNAME/container-4.5:latest
 
 workflows:
   simple_workflow:
