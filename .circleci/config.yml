@@ -50,7 +50,19 @@ jobs:
             heroku container:release web -a cecilia-su-devops
 
 workflows:
+  version: 2
   simple_workflow:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+    when:
+      branches:
+        only:
+          - main
+
+  publish_and_deploy:
     jobs:
       - build
       - test:
@@ -62,3 +74,7 @@ workflows:
       - deploy:
           requires:
             - publish
+    when:
+      branches:
+        only:
+          - release
