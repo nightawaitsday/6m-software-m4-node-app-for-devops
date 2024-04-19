@@ -31,6 +31,9 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: Check Docker version
+          command: docker --version
+      - run:
           name: Build Docker image
           command: |
             docker build -t cecilakhiew/container-4.5:latest .
